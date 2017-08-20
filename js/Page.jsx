@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let menu = this.state.buttonsText.map((element, index) => {
 
-                return <NavLink exact to={`/${this.state.buttonsText[index][0]}`} className="linkTo" activeClassName="active" key={index}>
+                return <NavLink exact to={`/${element[0]}`} className="linkTo" activeClassName="active" key={index}>
                     <div className="cube">
                         <div className="second">
-                            <span>{this.state.buttonsText[index][1]}</span>
+                            <span>{element[1]}</span>
                         </div>
                         <div className="first">
-                            <span>{this.state.buttonsText[index][1]}</span>
+                            <span>{element[1]}</span>
                         </div>
                     </div>
                 </NavLink>
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let menuHamburger;
             if (this.state.hamburgerClass === true) {
-                menuHamburger = this.state.buttonsText.map((element, index) => {
-                    return <div key={this.state.buttonsText[index][0]}>{element[1]}</div>
+              menuHamburger = this.state.buttonsText.map((element, index) => {
+                  return <NavLink exact to={`/${element[0]}`} className="hamburgerButton" activeClassName="hamburgerButtonActive" key={index}>{element[1]}</NavLink>
                 });
             } else {
                 menuHamburger === null;
