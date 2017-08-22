@@ -21,7 +21,7 @@ export class Offer extends React.Component{
             "Wizytówki",
             "Ulotki",
             "Projekty",
-            "Projekty2"
+            "Strony www"
           ]
 
       };
@@ -33,24 +33,18 @@ export class Offer extends React.Component{
 
 
   render() {
-console.log(window.location.href);
+
 
   let menuOffer = this.state.offerPage.map((element, index) => {
 
-      if(this.state.offerPage[index]===this.state.page){
-
-      return <div className = "blue" key={this.state.offerPage[index]}
-      onClick={e => this.handleClick(element)}>{element}</div>;
-
-      } else {
-
-      return <div className = "red" key={this.state.offerPage[index]}
-      onClick={e => this.handleClick(element)}>{element}</div>;}
+      return <div className = "red" key={index}
+      onClick={e => this.handleClick(element)}>{element}<span className="offerIcon">@</span></div>;
 
   });
 
-  return <div className="orders">
+  return <div className="offer">
     <div className="naviOffer">{menuOffer}</div>
+    <div className="three"></div>
     <h1>Zamówienia</h1>
     <h2>Jak składać zamówienia:</h2>
     <p>- mailowo: na adres <a href="mailto:info@substancja.eu">info@substancja.eu</a>, podając dokładne informacje zamawianego produktu ( wymiar, ilość, rodzaj materiału itp.), dane kontaktowe oraz dane do faktury. Prosimy także o podanie formy płatności oraz sposobu odbioru.<br />

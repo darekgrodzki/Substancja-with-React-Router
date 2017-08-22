@@ -1,5 +1,4 @@
 # substancja
-www.substancja.eu
+test.substancja.eu
 
-
-Projekt strony www.substancja.eu
+This is the project I'm currently working on. 

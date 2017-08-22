@@ -1,0 +1,64 @@
+@import 'variables';
+
+.offer {
+    width: 100%;
+
+    .naviOffer {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: $mainColor2;
+        padding: 25px;
+
+        .red {
+            display: block;
+            font-size: 1.4rem;
+            width: 160px;
+            line-height: 100px;
+            color: white;
+            background-color: $mainColor2;
+            height: 160px;
+            margin: 10px;
+            border: 1px solid white;
+            transition: 500ms;
+            -webkit-box-shadow: 0 0 20px -2px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0 0 20px -2px rgba(0,0,0,0.75);
+            box-shadow: 0 0 20px -2px rgba(0,0,0,0.75);
+            cursor: default;
+
+            &:hover {
+                background-color: lighten($mainColor2, 5%);
+                -webkit-box-shadow: inset 0 0 43px -2px rgba(0,0,0,0.75);
+                -moz-box-shadow: inset 0 0 20px -2px rgba(0,0,0,0.75);
+                box-shadow: inset 0 0 20px -2px rgba(0,0,0,0.75);
+                transition: 500ms;
+            }
+
+            .offerIcon {
+                display: block;
+                line-height: 40px;
+                font-size: 40px;
+            }
+        }
+    }
+
+    h1 {
+        line-height: 150%;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.7rem;
+        margin-top: 40px;
+        font-weight: 300;
+    }
+
+    h2 {
+        margin-top: 50px;
+        font-weight: 500;
+        font-size: 1.8rem;
+    }
+}

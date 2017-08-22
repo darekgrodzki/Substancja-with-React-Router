@@ -185,13 +185,14 @@ ul {
 
     nav {
         padding-left: 15vw;
-    }
+
 
     span {
         display: block;
         background: #666666;
         border-radius: 2px;
     }
+  }
 
     #menu-toggle {
         left: -15vw;
@@ -319,6 +320,7 @@ ul {
             line-height: 40px;
             color: rgb(88, 88, 87);
             cursor: default;
+            text-decoration: none;
             &:hover {
                 background-color: lighten($mainColor, 10%);
             }
