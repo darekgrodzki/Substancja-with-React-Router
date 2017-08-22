@@ -1,4 +1,4 @@
 # substancja
-test.substancja.eu
+http://test.substancja.eu/
 
-This is the project I'm currently working on. 
+This is the project I'm currently working on.
