@@ -3,6 +3,17 @@
 .offer {
     width: 100%;
 
+    h2 {
+        margin-top: 20px;
+        font-weight: 500;
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1.7rem;
+        margin-top: 20px;
+    }
+
     .naviOffer {
         width: 100%;
         text-align: center;
@@ -14,9 +25,8 @@
 
         .red {
             display: block;
-            font-size: 1.4rem;
             width: 160px;
-            line-height: 100px;
+            line-height: 80px;
             color: white;
             background-color: $mainColor2;
             height: 160px;
@@ -36,29 +46,53 @@
                 transition: 500ms;
             }
 
-            .offerIcon {
+            span {
                 display: block;
-                line-height: 40px;
-                font-size: 40px;
+                font-size: 1.6rem;
             }
         }
     }
 
-    h1 {
-        line-height: 150%;
-        font-weight: 500;
-        font-size: 2rem;
-    }
 
-    p {
+    .tytul {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
         font-size: 1.7rem;
-        margin-top: 40px;
-        font-weight: 300;
+
+        .subtitle {
+            width: 800px;
+            margin: 20px 0;
+            height: 3.4rem;
+        }
+
+        .nazwa {
+            display: block;
+            width: 200px;
+            border-right: 1px solid dimgray;
+            height: 3.4rem;
+        }
+
+        .cena {
+            width: 150px;
+            display: block;
+            text-align: center;
+            border-right: 1px solid dimgray;
+        }
     }
 
-    h2 {
-        margin-top: 50px;
-        font-weight: 500;
-        font-size: 1.8rem;
+    .offerGroup {
+        width: 800px;
+        margin: 50px auto;
+        text-align: left;
+        padding-bottom: 50px;
+        border-bottom: 1px solid dimgray;
+        h3{
+          margin: 10px 0;
+          line-height: 3.4rem;
+        }
+
+
     }
 }

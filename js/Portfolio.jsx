@@ -42,7 +42,6 @@ export class Portfolio extends React.Component {
 
 
     render() {
-console.log(this.props.match.params.id);
 
         let vertical = this.state.vertical.map((element, index) => {
 
@@ -62,7 +61,6 @@ console.log(this.props.match.params.id);
 
                       {vertical}
                       {horizontal}
-
         </div>
     }
 }

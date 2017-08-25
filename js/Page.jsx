@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, NavLink} from 'react-router-dom';
+import {Scroll, animateScroll} from 'react-scroll';
 import {Main} from './MainContent.jsx';
 import {Offer} from './Offer.jsx';
 import {Portfolio} from './Portfolio.jsx';
@@ -30,10 +31,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     ],
                     ["kontakt", "Kontakt"]
                 ],
-                hamburgerClass: false
+                hamburgerClass: false,
+                goToTop: false,
+                position: 0
             };
 
         }
+
+        componentDidMount() {
+            window.addEventListener('scroll', this.myfunction);
+        }
+
+        componentWillUnmount() {
+            window.removeEventListener('scroll', this.myfunction);
+        }
+
+        myfunction = () => {
+            if (window.scrollY > 300) {
+                this.setState({goToTop: true, position: window.scrollY});
+            } else {
+              this.setState({goToTop: false, position: 0})
+            }
+        }
+
         changeClass = (a) => {
             this.setState({hamburgerClass: a})
         }
@@ -54,13 +74,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 </NavLink>
             });
 
+            let goToTop;
+            if(this.state.goToTop===true){
+              goToTop = <div className="goToTop" onClick={() => animateScroll.scrollToTop({duration: Math.sqrt(this.state.position)*10, smooth: true})}><img src="./img/do_gory.png"/></div>
+            } else {
+              goToTop = <div className="goToTopHide"><img src="./img/do_gory.png"/></div>
+            }
+
             let menuHamburger;
             if (this.state.hamburgerClass === true) {
               menuHamburger = this.state.buttonsText.map((element, index) => {
                   return <NavLink exact to={`/${element[0]}`} className="hamburgerButton" activeClassName="hamburgerButtonActive" key={index}>{element[1]}</NavLink>
                 });
-            } else {
-                menuHamburger === null;
             }
 
             let hamburger;
@@ -95,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <BrowserRouter>
                     <div>
                         <header style={{
-                            backgroundImage: "url('./img/background1.jpg')"
+                            backgroundImage: "url('./img/tlo.jpg')"
                         }}>
                             <div className="header">
                                 <nav>
@@ -113,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </header>
                         <div className="three"></div>
+                        {goToTop}
 
                         <div style={{
                             width: '100%'

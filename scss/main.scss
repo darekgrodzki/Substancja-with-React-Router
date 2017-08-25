@@ -28,3 +28,26 @@ html {
     font-size: 10px;
     font-family: 'Ubuntu', sans-serif;
 }
+.goToTop{
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	opacity: 1;
+	transition: 1000ms;
+	position: fixed;
+	right: 20px;
+	bottom: 50px;
+	z-index: 2;
+
+}
+.goToTopHide{
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	opacity: 0;
+	transition: 1000ms;
+	position: fixed;
+	right: -40px;
+	bottom: 50px;
+	z-index: 2;
+}
