@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         "oferta", "Oferta"
                     ],
                     [
-                        "portfolio", "Potfolio"
+                        "portfolio", "Portfolio"
                     ],
                     ["kontakt", "Kontakt"]
                 ],

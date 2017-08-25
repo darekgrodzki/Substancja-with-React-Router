@@ -41,7 +41,8 @@ export class Offer extends React.Component {
         });
 
         return <div className="offer">
-            <div className="naviOffer">{menuOffer}</div>
+          <div className="naviOfferBox">
+            <div className="naviOffer">{menuOffer}</div></div>
             <div className="three"></div>
             <Element name="0" className="rollup"></Element>
             <Element name="1" className="offerGroup">
