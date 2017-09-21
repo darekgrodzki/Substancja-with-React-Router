@@ -18,7 +18,7 @@ export class ArticleTwo extends React.Component {
 
     render() {
         if (this.state.articleOne === true) {
-            return <div className="rotate" onMouseOut={this.art1back}>
+            return <div className="rotate" onMouseOut={this.art1back} onBlur={this.art1back} >
                 <article className="articleOne back">
                     <img src="./img/001.png"/>
                     <h2>Druk w małym formacie</h2><br/>
@@ -42,7 +42,7 @@ export class ArticleTwo extends React.Component {
                 </article>
             </div>
         } else {
-            return <div className="rotate" onMouseOver={this.art2back}>
+            return <div className="rotate" onMouseOver={this.art2back} onFocus={this.art2back}>
                 <article className="articleOne front">
                     <img src="./img/001.png"/>
                     <h2>Druk w małym formacie</h2><br/>

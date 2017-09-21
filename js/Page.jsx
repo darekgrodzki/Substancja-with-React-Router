@@ -7,6 +7,18 @@ import {Offer} from './Offer.jsx';
 import {Portfolio} from './Portfolio.jsx';
 import {Contact} from './Contact.jsx';
 import {Footer} from './footer.jsx';
+import {Banners} from './offer/banners.jsx';
+import {Rollups} from './offer/rollups.jsx';
+import {Stickers} from './offer/stickers.jsx';
+import {Popups} from './offer/popups.jsx';
+import {Wrapping} from './offer/wrapping.jsx';
+import {CarWrapping} from './offer/cars.jsx';
+import {Posters} from './offer/posters.jsx';
+import {Cards} from './offer/cards.jsx';
+import {Flyers} from './offer/flyers.jsx';
+import {Projects} from './offer/projects.jsx';
+import {Websites} from './offer/websites.jsx';
+import {Orders} from './offer/orders.jsx';
 require('../scss/main.scss');
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -33,13 +45,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 ],
                 hamburgerClass: false,
                 goToTop: false,
-                position: 0
+                concept: false,
+                stickyMenu: false
             };
 
         }
 
         componentDidMount() {
+
             window.addEventListener('scroll', this.myfunction);
+
+            setTimeout(() => {
+                this.setState({concept: true});
+            }, 700);
         }
 
         componentWillUnmount() {
@@ -47,10 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         myfunction = () => {
-            if (window.scrollY > 300) {
-                this.setState({goToTop: true, position: window.scrollY});
+            if (window.pageYOffset < 40) {
+                this.setState({stickyMenu: false, goToTop: false});
+            } else if (window.pageYOffset >= 40 && window.pageYOffset <= 300) {
+                this.setState({goToTop: false, stickyMenu: true})
             } else {
-              this.setState({goToTop: false, position: 0})
+                this.setState({goToTop: true})
             }
         }
 
@@ -62,91 +82,150 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let menu = this.state.buttonsText.map((element, index) => {
 
-                return <NavLink exact to={`/${element[0]}`} className="linkTo" activeClassName="active" key={index}>
-                    <div className="cube">
-                        <div className="second">
-                            <span>{element[1]}</span>
+                if (element[0] === "oferta") {
+                    return <NavLink to={`/${element[0]}`} className="linkTo" activeClassName="active" key={index}>
+                        <div className="cube">
+                            <div className="second">
+                                <span>{element[1]}</span>
+                            </div>
+                            <div className="first">
+                                <span>{element[1]}</span>
+                            </div>
                         </div>
-                        <div className="first">
-                            <span>{element[1]}</span>
+                    </NavLink>
+                } else {
+                    return <NavLink exact to={`/${element[0]}`} className="linkTo" activeClassName="active" key={index}>
+                        <div className="cube">
+                            <div className="second">
+                                <span>{element[1]}</span>
+                            </div>
+                            <div className="first">
+                                <span>{element[1]}</span>
+                            </div>
                         </div>
-                    </div>
-                </NavLink>
+                    </NavLink>
+                }
             });
 
             let goToTop;
-            if(this.state.goToTop===true){
-              goToTop = <div className="goToTop" onClick={() => animateScroll.scrollToTop({duration: Math.sqrt(this.state.position)*10, smooth: true})}><img src="./img/do_gory.png"/></div>
+            if (this.state.goToTop === true) {
+                goToTop = <div className="goToTop" onClick={() => animateScroll.scrollToTop({duration: 1000, smooth: true})}><img src="./img/do_gory.png"/></div>
             } else {
-              goToTop = <div className="goToTopHide"><img src="./img/do_gory.png"/></div>
+                goToTop = <div className="goToTop goToTopHide"><img src="./img/do_gory.png"/></div>
             }
 
             let menuHamburger;
             if (this.state.hamburgerClass === true) {
-              menuHamburger = this.state.buttonsText.map((element, index) => {
-                  return <NavLink exact to={`/${element[0]}`} className="hamburgerButton" activeClassName="hamburgerButtonActive" key={index}>{element[1]}</NavLink>
+                menuHamburger = this.state.buttonsText.map((element, index) => {
+                    return <NavLink exact to={`/${element[0]}`} className="hamburgerButton" activeClassName="hamburgerButtonActive" key={index} onClick={e => this.changeClass(false)}>{element[1]}</NavLink>
                 });
             }
 
             let hamburger;
             if (this.state.hamburgerClass === false) {
-                hamburger = <div id="menu-toggle" onClick={e => this.changeClass(true)}>
-                    <div id="hamburger">
+                hamburger = <div className="menu-toggle" onClick={e => this.changeClass(true)}>
+                    <div className="hamburger">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
-                    <div id="cross">
+                    <div className="cross">
                         <span></span>
                         <span></span>
                     </div>
                 </div>
             } else {
-                hamburger = <div id="menu-toggle" className="open" onClick={e => this.changeClass(false)}>
-                    <div id="hamburger">
+                hamburger = <div className="menu-toggle open" onClick={e => this.changeClass(false)}>
+                    <div className="hamburger">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
-                    <div id="cross">
+                    <div className="cross">
                         <span></span>
                         <span></span>
                     </div>
                 </div>
+            }
+            let header;
+            if (this.state.stickyMenu === true) {
+                header = <div className="headerContainer stickyMenu">
+                    <div className="header">
+                        <nav>
+                            <img src="./img/logo.png"/>
+                            <ul>{menu}</ul>
 
+                            {hamburger}
+                            <div className="hamburgerNavi">
+                                {menuHamburger}
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            } else {
+                header = <div className="headerContainer">
+                    <div className="header">
+                        <nav>
+                            <img src="./img/logo.png"/>
+                            <ul>{menu}</ul>
+
+                            {hamburger}
+                            <div className="hamburgerNavi">
+                                {menuHamburger}
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            }
+
+            let concept;
+            if (this.state.concept === true) {
+                concept = <div className="conceptContainer">
+                    <div className="conceptDiv">
+                        <p>DRUK W DUŻYM I MAŁYM
+                        </p>
+                        <p>FORMACIE</p>
+                        <p>& STUDIO REKLAMY</p>
+                    </div>
+                </div>
+            } else {
+                concept = <div className="conceptContainer">
+                    <div className="conceptDivBlank">
+                        <p>DRUK W DUŻYM I MAŁYM
+                        </p>
+                        <p>FORMACIE</p>
+                        <p>& STUDIO REKLAMY</p>
+                    </div>
+                </div>
             }
 
             return (
                 <BrowserRouter>
                     <div>
-                        <header style={{
-                            backgroundImage: "url('./img/tlo.jpg')"
-                        }}>
-                            <div className="header">
-                                <nav>
-                                    <img src="./img/logo.png"/>
-                                    <ul>{menu}</ul>
-
-                                    {hamburger}
-                                    <div className="hamburgerNavi">
-                                        {menuHamburger}
-                                    </div>
-                                </nav>
-                            </div>
-                            <div className="conceptDiv">
-                                <p>Połączyliśmy potencjał dwóch substancji: agencji reklamowej i drukarni. Artystyczny świat kreacji może więc korzystać z całej palety precyzyjnych technologii wyrażania myśli i koncepcji. Co to oznacza dla naszych klientów? Przede wszystkim niższe koszty produkcji reklam (typu: stojaki roll up, banery reklamowe, naklejki, plakaty itd.) oraz dużą oszczędność czasu. Łatwiej jest także wyeliminować wszelkie problemy, występujące często na linii agencja reklamowa - drukarnia.</p>
-                            </div>
+                        <header>
+                            {header}
+                            {concept}
                         </header>
                         <div className="three"></div>
                         {goToTop}
 
-                        <div style={{
-                            width: '100%'
-                        }}>
+                        <div>
                             <Route exact path="/" component={Main}/>
-                            <Route exact path="/oferta" component={Offer}/>
-                            <Route exact path="/portfolio" component={Portfolio}/>
-                            <Route exact path="/kontakt" component={Contact}/>
+                            <Route path="/oferta" component={Offer}/>
+                            <Route path="/oferta/rollupy" component={Rollups}/>
+                            <Route path="/oferta/banery" component={Banners}/>
+                            <Route path="/oferta/naklejki" component={Stickers}/>
+                            <Route path="/oferta/popupy" component={Popups}/>
+                            <Route path="/oferta/witryny" component={Wrapping}/>
+                            <Route path="/oferta/reklama_na_samochodach" component={CarWrapping}/>
+                            <Route path="/oferta/plakaty_i_fototapety" component={Posters}/>
+                            <Route path="/oferta/wizytowki" component={Cards}/>
+                            <Route path="/oferta/ulotki" component={Flyers}/>
+                            <Route path="/oferta/Projekty" component={Projects}/>
+                            <Route path="/oferta/strony_www" component={Websites}/>
+                            <Route path="/oferta/zamowienia" component={Orders}/>
+                            <Route path="/portfolio" component={Portfolio}/>
+                            <Route path="/kontakt" component={Contact}/>
                         </div>
                         <Footer/>
                     </div>

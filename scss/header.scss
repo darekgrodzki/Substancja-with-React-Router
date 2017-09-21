@@ -3,23 +3,30 @@
 header {
     width: 100%;
     margin: 0 auto;
+    background-image: url('/img/backgroundMedium.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 450px;
-    display: flex;
-    flex-flow: column;
-    align-items: flex-end;
-    justify-content: flex-end;
+    height: 300px;
 }
 
-.header {
+.headerContainer {
+    background-color: $mainColor;
+    height: 60px;
     position: absolute;
     width: 100%;
     top: 40px;
-    left: 0;
-    background-color: $mainColor;
-    height: 60px;
+}
+
+.header {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.stickyMenu {
+    position: fixed;
+    top: 0;
+    z-index: 2;
 }
 
 nav {
@@ -32,109 +39,76 @@ nav {
     align-items: center;
 
     img {
-        height: 35px;
+        height: 40px;
         width: auto;
+        margin-left: 70px;
     }
 }
 
 ul {
     display: flex;
-    border: none;
-}
-.linkTo{
-  display: flex;
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-right: 10px;
-  text-decoration: none;
- outline: 0;
 }
 
 
-.linkTo > .cube{
+.linkTo {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-right: 10px;
+    text-decoration: none;
+    outline: 0;
 
-      text-align: center;
-      margin: 0 auto;
-      display: block;
-      width: 100px;
-      height: 60px;
-      transition: 800ms;
+    .cube {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        width: 110px;
+        height: 60px;
+        transition: 800ms;
+        line-height: 60px;
 
-      .second {
-          transform: translate(0, -50%) rotateX(-90deg);
-          transition: 500ms;
-          height: 60px;
-          width: 100px;
-          line-height: 60px;
-          color: #666666;
-          background-color: darken($mainColor,20%);
-          cursor: default;
+        .second {
+            transform: translate(0, -50%) rotateX(-90deg);
+            transition: 500ms;
+            color: #666666;
+            background-color: darken($mainColor,20%);
+            cursor: default;
+        }
 
-      }
+        .first {
+            transform: translate(0, -100%) rotateX(0deg);
+            transition: 500ms;
+            color: #666666;
+            background-color: $mainColor;
+            cursor: default;
 
-      .first {
-          transform: translate(0, -100%) rotateX(0deg);
-          transition: 500ms;
-          height: 60px;
-          line-height: 60px;
-          color: #666666;
-          width: 100px;
-          background-color: $mainColor;
-          cursor: default;
-      }
-      // .shadow {
-      //     -webkit-box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-      //     -moz-box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-      //     box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-      // }
-      //
-      &:hover .first {
-        -webkit-box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-            -moz-box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-            box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-
-      }
-//       &:hover .second {
-//           background-color: darken($mainColor, 10%);
-//       }
+            &:hover {
+                -webkit-box-shadow: 0 -2px 7px 0 rgba(61,51,61,1);
+                -moz-box-shadow: 0 -2px 7px 0 rgba(61,51,61,1);
+                box-shadow: 0 -2px 7px 0 rgba(61,51,61,1);
+            }
+        }
+    }
 }
 
-.active > .cube{
+.active {
 
-      text-align: center;
-      margin: 0 auto;
-      display: block;
-      width: 100px;
-      height: 60px;
-      transition: 800ms;
+    .cube {
 
-      >.first {
-          transform: translate(0, -50%) rotateX(90deg);
-          transition: 500ms;
-          height: 60px;
-          width: 100px;
-          line-height: 60px;
-          color: white;
-          background-color: $mainColor;
-          cursor: default;
+        .first {
+            transform: translate(0, -50%) rotateX(90deg);
+            color: white;
+        }
 
-      }
-
-      >.second {
-          transform: rotateX(0deg);
-          transition: 500ms;
-          height: 60px;
-          line-height: 60px;
-          color: white;
-          width: 100px;
-          background-color: $mainColor;
-          cursor: default;
-          -webkit-box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-              -moz-box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-              box-shadow: 0 3px 7px 0 rgba(61,51,61,1);
-
-      }
-
+        .second {
+            transform: rotateX(0deg);
+            color: white;
+            background-color: $mainColor;
+            -webkit-box-shadow: 0 -2px 7px 0 rgba(61,51,61,1);
+            -moz-box-shadow: 0 -2px 7px 0 rgba(61,51,61,1);
+            box-shadow: 0 -2px 7px 0 rgba(61,51,61,1);
+        }
+    }
 }
 
 .three {
@@ -142,59 +116,161 @@ ul {
     height: 30px;
 }
 
+.conceptContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 130px;
+}
+
+.conceptDivBlank {
+    background-color: rgba($mainColor2, 0.9);
+    padding: 17px;
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 3.4rem;
+    color: white;
+    height: 140px;
+    width: 280px;
+    text-align: center;
+    opacity: 0;
+
+    p:nth-child(1) {
+        transform: rotateX(90deg);
+    }
+
+    p:nth-child(2) {
+        transform: rotateX(90deg);
+    }
+
+    p:nth-child(3) {
+        transform: rotateX(90deg);
+    }
+}
+
 .conceptDiv {
     background-color: rgba($mainColor2, 0.9);
     padding: 17px;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     font-weight: 300;
-    line-height: 1.4rem;
+    line-height: 3.4rem;
     color: white;
-    height: 150px;
-    width: 400px;
-    margin-bottom: 50px;
-    margin-right: 10%;
-    border-radius: 10px;
-    text-align: justify;
+    height: 140px;
+    width: 280px;
+    border-radius: 5px;
+    text-align: center;
+    opacity: 1;
+    transition: 700ms;
+
+    p:nth-child(1) {
+        transform: rotateX(0deg);
+        transition: 500ms;
+        transition-delay: 800ms;
+    }
+
+    p:nth-child(2) {
+        transform: rotateX(0deg);
+        transition: 500ms;
+        transition-delay: 1400ms;
+    }
+
+    p:nth-child(3) {
+        transform: rotateX(0deg);
+        transition: 500ms;
+        transition-delay: 1900ms;
+    }
 }
 
-#menu-toggle {
+.menu-toggle {
     display: none;
 }
 
 .hamburgerNavi {
     display: none;
 }
-@media (max-width:1000px) {
-    nav {
-        width: 100%;
-        padding-left: 30px;
+
+.goToTop {
+    background-color: rgb(0,160,227);
+    border-radius: 10px;
+    opacity: 1;
+    transition: 1000ms;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    z-index: 2;
+
+    img {
+        width: 80px;
+        height: 80px;
     }
 }
+
+.goToTop.goToTopHide {
+    opacity: 0;
+    transition: 1000ms;
+    position: fixed;
+    right: -40px;
+    z-index: 2;
+}
+
+@media (max-width:1000px) {
+
+    nav {
+        width: 100%;
+        padding-left: 0;
+
+        img {
+            margin-left: 10vw;
+        }
+    }
+
+    .conceptContainer {
+        width: 100%;
+        padding-left: 10vw;
+    }
+}
+
 @media (max-width:700px) {
+
     header {
-        height: 290px;
+        height: 260px;
+        background-image: url('/img/backgroundSmall.jpg');
+    }
+
+    .headerContainer {
+        position: fixed;
+        top: 0;
+        z-index: 2;
     }
 
     ul {
         display: none;
     }
 
+    .conceptContainer {
+        padding-top: 90px;
+        padding-left: 0;
+    }
+
     .conceptDiv {
-        display: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .conceptDivBlank {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     nav {
-        padding-left: 15vw;
 
-
-    span {
-        display: block;
-        background: #666666;
-        border-radius: 2px;
+        span {
+            display: block;
+            background: #666666;
+            border-radius: 2px;
+        }
     }
-  }
 
-    #menu-toggle {
+    .menu-toggle {
         left: -15vw;
         display: block;
         height: 50px;
@@ -202,7 +278,7 @@ ul {
         position: relative;
         cursor: default;
 
-        #hamburger {
+        .hamburger {
             position: absolute;
             height: 100%;
             width: 100%;
@@ -231,7 +307,7 @@ ul {
             }
         }
 
-        #cross {
+        .cross {
             position: absolute;
             height: 100%;
             width: 100%;
@@ -239,6 +315,7 @@ ul {
             transform: rotate(45deg);
 
             span {
+
                 &:nth-child(1) {
                     height: 0;
                     width: 4px;
@@ -262,8 +339,10 @@ ul {
         }
     }
 
-    #menu-toggle.open {
-        #hamburger {
+    .menu-toggle.open {
+
+        .hamburger {
+
             span {
                 width: 0;
 
@@ -284,16 +363,16 @@ ul {
             }
         }
 
-        #cross {
+        .cross {
+
             span {
+
                 &:nth-child(1) {
                     height: 80%;
                     transition: 0.25s ease-in-out;
                     transition-delay: 0.625s;
                 }
-            }
 
-            span {
                 &:nth-child(2) {
                     width: 80%;
                     transition: 0.25s ease-in-out;
@@ -307,26 +386,65 @@ ul {
         display: block;
         position: absolute;
         top: 60px;
-        left: 20vw;
-        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 200px;
         background-color: $mainColor;
+        z-index: 2;
 
         .hamburgerButton {
             border-top: 2px solid $mainColor2;
             text-align: center;
             display: block;
-            width: 100%;
             font-size: 1.8rem;
             line-height: 40px;
-            color: rgb(88, 88, 87);
+            color: #666666;
             cursor: default;
             text-decoration: none;
+
             &:hover {
                 background-color: lighten($mainColor, 10%);
             }
         }
-        .hamburgerButtonActive{
-          background-color: lighten($mainColor, 10%);
+
+        .hamburgerButtonActive {
+            background-color: lighten($mainColor, 10%);
         }
+    }
+
+    .goToTop {
+        width: 60px;
+        height: 60px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+
+    header {
+        background-image: url('/img/backgroundBig.jpg');
+    }
+}
+
+@media (min-width: 1500px) {
+  
+    header {
+        height: 350px;
+    }
+
+    .header {
+        width: 1500px;
+    }
+
+    .conceptContainer {
+        width: 1200px;
+        margin: 0 auto;
+        padding-top: 155px;
     }
 }
